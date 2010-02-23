@@ -13,10 +13,11 @@ class joinlines:
   
   def initGui(self):
     self.action = QAction(QIcon(":/plugins/joinlines/icon.png"), "Join two lines", self.iface.mainWindow())
-    self.action.setStatusTip("Permanently join two lines")
+    self.action.setWhatsThis("Permanently join two lines")
+    self.action.setStatusTip("Permanently join two lines (removes lines used for joining)")
     
     QObject.connect(self.action, SIGNAL("activated()"), self.run)
-    
+    self.iface.addToolBarIcon(self.action)
     self.iface.addPluginToMenu("&Join two lines", self.action)
     
   def unload(self):

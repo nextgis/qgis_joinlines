@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/plugins/osmpoly_export" >
+    <qresource prefix="/plugins/joinlines" >
         <file>icon.png</file>
     </qresource>
 </RCC>

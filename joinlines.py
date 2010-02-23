@@ -4,7 +4,6 @@ from PyQt4.QtGui import *
 from qgis.core import *
 
 import resources
-from polygenerator_dlgselfield import dlgSelField
 
 class joinlines:
 

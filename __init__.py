@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-mVersion = "0.1.1"
+mVersion = "0.1.2"
 def name():
   return "Join lines"
 def description():

@@ -50,7 +50,7 @@ class joinlines:
     
     i=0
     pnts=[]
-    vertex=geom1.vertexAt(i)
+    vertex=geom0.vertexAt(i)
     while (vertex!=QgsPoint(0,0)):
         apnt = QgsPoint(geom0.vertexAt(i))
         pnts.append(apnt)

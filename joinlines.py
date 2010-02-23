@@ -45,8 +45,8 @@ class joinlines:
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
     selfeats = curLayer.selectedFeatures()
-    geom0 = QgsGeometry(selfeats[1].geometry())
-    geom1 = QgsGeometry(selfeats[0].geometry())
+    geom0 = QgsGeometry(selfeats[0].geometry())
+    geom1 = QgsGeometry(selfeats[1].geometry())
     
     i=0
     pnts=[]

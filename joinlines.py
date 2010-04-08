@@ -16,7 +16,7 @@ class joinlines:
     self.action.setWhatsThis("Permanently join two lines")
     self.action.setStatusTip("Permanently join two lines (removes lines used for joining)")
     
-    QObject.connect(self.action, SIGNAL("activated()"), self.run)
+    QObject.connect(self.action, SIGNAL("triggered()"), self.run)
     self.iface.addToolBarIcon(self.action)
     self.iface.addPluginToMenu("&Join two lines", self.action)
     

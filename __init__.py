@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-mVersion = "0.2.1"
+mVersion = "0.2.2"
 def name():
   return "Join lines"
 def description():
   return "Permanently join two intersecting or snapped lines"
-def qgisMinimumVersion(): 
-  return "1.0" 
+def qgisMinimumVersion():
+  return "1.0"
 def version():
   return mVersion
 def authorName():

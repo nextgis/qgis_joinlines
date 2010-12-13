@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-mVersion = "0.2.2"
+mVersion = "0.2.3"
 def name():
   return "Join lines"
 def description():
@@ -10,6 +10,8 @@ def version():
   return mVersion
 def authorName():
   return "Maxim Dubinin, sim@gis-lab.info"
+def icon():
+  return "icon.png"
 def classFactory(iface):
   from joinlines import joinlines
   return joinlines(iface)

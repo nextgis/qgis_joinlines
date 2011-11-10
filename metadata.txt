@@ -1,0 +1,7 @@
+[general]
+name=Join lines
+description=Permanently join two intersecting or snapped lines
+version=Version 0.2.3
+authorName=Maxim Dubinin, sim@gis-lab.info
+icon=icon.png
+qgisMinimumVersion=1.0.0

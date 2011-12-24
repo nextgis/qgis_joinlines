@@ -17,12 +17,21 @@ class joinlines:
     self.action.setStatusTip("Permanently join two lines (removes lines used for joining)")
 
     QObject.connect(self.action, SIGNAL("triggered()"), self.run)
-    self.iface.addToolBarIcon(self.action)
-    self.iface.addPluginToMenu("&Join two lines", self.action)
+
+    if hasattr( self.iface, "addPluginToVectorMenu" ):
+      self.iface.addVectorToolBarIcon(self.action)
+      self.iface.addPluginToVectorMenu("&Join two lines", self.action)
+    else:
+      self.iface.addToolBarIcon(self.action)
+      self.iface.addPluginToMenu("&Join two lines", self.action)
 
   def unload(self):
-    self.iface.removePluginMenu("&Join two lines",self.action)
-    self.iface.removeToolBarIcon(self.action)
+    if hasattr( self.iface, "addPluginToVectorMenu" ):
+      self.iface.removePluginVectorMenu("&Join two lines",self.action)
+      self.iface.removeVectorToolBarIcon(self.action)
+    else:
+      self.iface.removePluginMenu("&Join two lines",self.action)
+      self.iface.removeToolBarIcon(self.action)
 
   def run(self):
     layersmap=QgsMapLayerRegistry.instance().mapLayers()

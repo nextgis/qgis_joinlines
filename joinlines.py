@@ -38,20 +38,20 @@ class joinlines:
     layerslist=[]
     cl = self.iface.mapCanvas().currentLayer()
     if (cl == None):
-      infoString = QString("No layers selected")
+      infoString = "No layers selected"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
     if (cl.type() <> cl.VectorLayer):
-      infoString = QString("Not a vector layer")
+      infoString = "Not a vector layer"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
     if cl.geometryType() <> QGis.Line:
-      infoString = QString("Not a line layer")
+      infoString = "Not a line layer"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
     featids = cl.selectedFeaturesIds()
     if (len(featids) != 2):
-      infoString = QString("Only two lines should be selected")
+      infoString = "Only two lines should be selected"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
     selfeats = cl.selectedFeatures()
@@ -62,7 +62,7 @@ class joinlines:
     itsct = geom1.intersection(geom0)
     itspnt = QgsPoint(itsct.vertexAt(0))
     if QgsPoint(itsct.vertexAt(1))!=QgsPoint(0,0):
-      infoString = QString("Intersection contains more then 1 point")
+      infoString = "Intersection contains more then 1 point"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
 
@@ -121,12 +121,14 @@ class joinlines:
             cl.changeGeometry( featids[ 1 ], newlist[ 0 ] )
 
         #Get new geometries back
-        f0 = QgsFeature()
-        cl.featureAtId(featids[ 0 ], f0)
+
+        request = QgsFeatureRequest().setFilterFids(featids)
+        features = [feat for feat in cl.getFeatures(request)]
+
+        f0 = features[0]
         geom0 = QgsGeometry(f0.geometry())
 
-        f1 = QgsFeature()
-        cl.featureAtId(featids[ 1 ], f1)
+        f1 = features[1]
         geom1 = QgsGeometry(f1.geometry())
 
         #get first and last point for each line
@@ -173,10 +175,10 @@ class joinlines:
     #selfeats[0].setGeometry(newgeom)
     #curLayer.commitChanges()
     cl.startEditing()
-    cl.beginEditCommand( QString( "Join selected lines" ) )
+    cl.beginEditCommand("Join selected lines")
     cl.changeGeometry( featids[ 0 ], newgeom )
     cl.endEditCommand()
-    cl.beginEditCommand( QString( "Delete feature" ) )
+    cl.beginEditCommand("Delete feature")
     cl.deleteFeature( featids[ 1 ] )
     cl.endEditCommand()
     self.iface.mapCanvas().refresh()

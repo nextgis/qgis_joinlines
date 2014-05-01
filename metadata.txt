@@ -5,4 +5,4 @@ category=Vector
 version=Version 0.2.4
 authorName=Maxim Dubinin, sim@gis-lab.info
 icon=icon.png
-qgisMinimumVersion=1.0.0
+qgisMinimumVersion=2.0.0

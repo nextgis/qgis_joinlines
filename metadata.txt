@@ -1,10 +1,37 @@
+# This file contains metadata for your plugin. Since 
+# version 2.0 of QGIS this is the proper way to supply 
+# information about a plugin. The old method of 
+# embedding metadata in __init__.py will 
+# is no longer supported since version 2.0.
+
+# This file should be included when you package your plugin.
+# Mandatory items:
+
 [general]
 name=Join lines
+qgisMinimumVersion=3.4
 description=Permanently join two intersecting or snapped lines
-category=Vector
 version=Version 0.3
 author=NextGIS
 authorName=Maxim Dubinin
 email=sim@gis-lab.info
+
+# End of mandatory metadata
+
+# Optional items:
+
+# Uncomment the following line and add your changelog:
+changelog=
+
+
+
+homepage=https://github.com/nextgis/qgis.qgis_joinlines
+tracker=https://github.com/nextgis/qgis.qgis_joinlines/issues
+repository=https://github.com/nextgis/qgis.qgis_joinlines
 icon=icon.png
-qgisMinimumVersion=2.0.0
+
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False

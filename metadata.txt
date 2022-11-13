@@ -11,10 +11,10 @@
 name=Join lines
 qgisMinimumVersion=3.4
 description=Permanently join two intersecting or snapped lines
-version=Version 0.3
+version=Version 0.4
 author=NextGIS
-authorName=Maxim Dubinin
-email=sim@gis-lab.info
+authorName=NextGIS
+email=info@nextgis.com
 
 # End of mandatory metadata
 
@@ -22,12 +22,12 @@ email=sim@gis-lab.info
 
 # Uncomment the following line and add your changelog:
 changelog=
+        0.4
+          * Porting to QGIS3
 
-
-
-homepage=https://github.com/nextgis/qgis.qgis_joinlines
-tracker=https://github.com/nextgis/qgis.qgis_joinlines/issues
-repository=https://github.com/nextgis/qgis.qgis_joinlines
+homepage=https://nextgis.com
+tracker=https://github.com/nextgis/qgis_joinlines/issues
+repository=https://github.com/nextgis/qgis_joinlines
 icon=icon.png
 
 # experimental flag

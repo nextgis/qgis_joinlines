@@ -11,7 +11,7 @@
 name=Join lines
 about=Permanently join two lines
 description=Permanently join two intersecting or snapped lines. Same layer. Not to be mistaken with multiline.
-version=Version 0.4
+version=0.4
 qgisMinimumVersion=3.4
 qgisMaximumVersion=3.99
 author=NextGIS

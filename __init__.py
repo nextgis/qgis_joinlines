@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
 mVersion = "0.2.4"
 def name():
   return "Join lines"
@@ -15,5 +16,5 @@ def authorName():
 def icon():
   return "icon.png"
 def classFactory(iface):
-  from joinlines import joinlines
+  from .joinlines import joinlines
   return joinlines(iface)

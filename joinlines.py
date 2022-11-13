@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from __future__ import absolute_import
+from builtins import object
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtWidgets import *
 from qgis.core import *
 
-import resources
 
-class joinlines:
+
+class joinlines(object):
 
   def __init__(self, iface):
     """Initialize the class"""
@@ -16,7 +19,7 @@ class joinlines:
     self.action.setWhatsThis("Permanently join two lines")
     self.action.setStatusTip("Permanently join two lines (removes lines used for joining)")
 
-    QObject.connect(self.action, SIGNAL("triggered()"), self.run)
+    self.action.triggered.connect(self.run)
 
     if hasattr( self.iface, "addPluginToVectorMenu" ):
       self.iface.addVectorToolBarIcon(self.action)
@@ -34,22 +37,23 @@ class joinlines:
       self.iface.removeToolBarIcon(self.action)
 
   def run(self):
-    layersmap=QgsMapLayerRegistry.instance().mapLayers()
+    layersmap=QgsProject.instance().mapLayers()
     layerslist=[]
-    cl = self.iface.mapCanvas().currentLayer()
+    cl = self.iface.activeLayer()
+    # cl = self.iface.mapCanvas().currentLayer()
     if (cl == None):
       infoString = "No layers selected"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
-    if (cl.type() <> cl.VectorLayer):
+    if (cl.type() != cl.VectorLayer):
       infoString = "Not a vector layer"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
-    if cl.geometryType() <> QGis.Line:
+    if cl.geometryType() != QgsWkbTypes.GeometryType.LineGeometry:
       infoString = "Not a line layer"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
-      return
-    featids = cl.selectedFeaturesIds()
+      return    
+    featids = cl.selectedFeatureIds()
     if (len(featids) != 2):
       infoString = "Only two lines should be selected"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
@@ -59,20 +63,29 @@ class joinlines:
     geom1 = QgsGeometry(selfeats[1].geometry())
 
     #Find intersection point (not used!)
-    itsct = geom1.intersection(geom0)
-    itspnt = QgsPoint(itsct.vertexAt(0))
-    if QgsPoint(itsct.vertexAt(1))!=QgsPoint(0,0):
+    # itspnt = QgsPoint(itsct.vertexAt(0))
+    # if QgsPoint(itsct.vertexAt(1))!=QgsPoint(0,0):
+    #   infoString = "Intersection contains more then 1 point"
+    #   QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
+    #   return
+    itsct = geom1.intersection(geom0)       
+    itspnt = itsct.vertexAt(0)
+    if not itsct.vertexAt(1).isEmpty():
       infoString = "Intersection contains more then 1 point"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
       return
 
     #get first and last point for each line
+    geom0.convertToSingleType()
+    geom1.convertToSingleType()
     lastpointindex0 = len(geom0.asPolyline()) - 1
     lastpointindex1 = len(geom1.asPolyline()) - 1
-    pnt00 = QgsPoint(geom0.vertexAt(0))
-    pnt01 = QgsPoint(geom0.vertexAt(lastpointindex0))
-    pnt10 = QgsPoint(geom1.vertexAt(0))
-    pnt11 = QgsPoint(geom1.vertexAt(lastpointindex1))
+    # lastpointindex0 = len(geom0.asMultiPolyline) - 1
+    # lastpointindex1 = len(geom1.asMultiPolyline) - 1
+    pnt00 = geom0.vertexAt(0)
+    pnt01 = geom0.vertexAt(lastpointindex0)
+    pnt10 = geom1.vertexAt(0)
+    pnt11 = geom1.vertexAt(lastpointindex1)
 
     if itspnt != pnt00 and itspnt != pnt01:
         #create two lists of points
@@ -134,10 +147,10 @@ class joinlines:
         #get first and last point for each line
         lastpointindex0 = len(geom0.asPolyline()) - 1
         lastpointindex1 = len(geom1.asPolyline()) - 1
-        pnt00 = QgsPoint(geom0.vertexAt(0))
-        pnt01 = QgsPoint(geom0.vertexAt(lastpointindex0))
-        pnt10 = QgsPoint(geom1.vertexAt(0))
-        pnt11 = QgsPoint(geom1.vertexAt(lastpointindex1))
+        pnt00 = geom0.vertexAt(0)
+        pnt01 = geom0.vertexAt(lastpointindex0)
+        pnt10 = geom1.vertexAt(0)
+        pnt11 = geom1.vertexAt(lastpointindex1)
 
     #combine two lines based on 4 possible cases
     respnts = []
@@ -170,7 +183,7 @@ class joinlines:
         pnts1res.extend(respnts)
         respnts = pnts1res
 
-    newgeom = QgsGeometry.fromPolyline(respnts)
+    newgeom = QgsGeometry.fromPolylineXY(respnts)
 
     #selfeats[0].setGeometry(newgeom)
     #curLayer.commitChanges()

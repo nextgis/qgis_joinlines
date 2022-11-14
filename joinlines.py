@@ -15,7 +15,7 @@ class joinlines(object):
     self.iface = iface
 
   def initGui(self):
-    self.action = QAction(QIcon(":/plugins/joinlines/icon.png"), "Join two lines", self.iface.mainWindow())
+    self.action = QAction(QIcon(os.path.dirname(__file__)+"/icon.png"), "Join two lines", self.iface.mainWindow())
     self.action.setWhatsThis("Permanently join two lines")
     self.action.setStatusTip("Permanently join two lines (removes lines used for joining)")
 

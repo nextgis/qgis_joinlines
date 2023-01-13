@@ -9,8 +9,8 @@
 
 [general]
 name=Join lines
-about=Permanently join two lines
-description=Permanently join two intersecting or snapped lines. Same layer. Not to be mistaken with multiline.
+description=Permanently join two lines
+about=Permanently join two intersecting or snapped lines. Dangle part will be dropped. Same layer. Not to be mistaken with a multiline. Developed by NextGIS. Any feedback is welcome at https://nextgis.com/contact
 version=0.4
 qgisMinimumVersion=3.4
 qgisMaximumVersion=3.99

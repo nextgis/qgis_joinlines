@@ -25,7 +25,7 @@ class joinlines(object):
 
   def initGui(self):
     self.action = QAction(
-        QIcon(os.path.dirname(__file__)+"/icon.png"),
+        QIcon(path.join(self.plugin_dir, "icon.png")),
         QApplication.translate("Join lines", "Join two lines"),
         self.iface.mainWindow()
     )
@@ -97,7 +97,7 @@ class joinlines(object):
     if cl.geometryType() != QgsWkbTypes.GeometryType.LineGeometry:
       infoString = "Not a line layer"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
-      return    
+      return
     featids = cl.selectedFeatureIds()
     if (len(featids) != 2):
       infoString = "Only two lines should be selected"
@@ -113,7 +113,7 @@ class joinlines(object):
     #   infoString = "Intersection contains more then 1 point"
     #   QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
     #   return
-    itsct = geom1.intersection(geom0)       
+    itsct = geom1.intersection(geom0)
     itspnt = itsct.vertexAt(0)
     if not itsct.vertexAt(1).isEmpty():
       infoString = "Intersection contains more then 1 point"

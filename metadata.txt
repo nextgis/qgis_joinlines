@@ -9,8 +9,10 @@
 
 [general]
 name=Join lines
-description=Permanently join two lines
-about=Permanently join two intersecting or snapped lines. Dangle part will be dropped. Same layer. Not to be mistaken with a multiline. Developed by NextGIS. Any feedback is welcome at https://nextgis.com/contact
+about=Permanently join two lines
+about[ru]=Перманентно соединить две строки
+description=Permanently join two intersecting or snapped lines. Same layer. Not to be mistaken with multiline.
+description[ru]=Постоянное соединение двух пересекающихся или привязанных линий. Тот же слой. Не путать с мультилинией.
 version=0.4
 qgisMinimumVersion=3.4
 qgisMaximumVersion=3.99
@@ -31,6 +33,8 @@ homepage=https://nextgis.com
 tracker=https://github.com/nextgis/qgis_joinlines/issues
 repository=https://github.com/nextgis/qgis_joinlines
 icon=icon.png
+video=https://youtu.be/KJqZnNwJisE
+video[ru]=https://youtu.be/oeG9Z7yXd2Q
 
 # experimental flag
 experimental=False

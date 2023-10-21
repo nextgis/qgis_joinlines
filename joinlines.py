@@ -6,6 +6,12 @@ from qgis.PyQt.QtGui import *
 from qgis.PyQt.QtWidgets import *
 from qgis.core import *
 import os
+from os import path
+
+from qgis.PyQt.QtCore import QTranslator, QCoreApplication
+from qgis.core import QgsApplication
+from qgis.PyQt.QtWidgets import QAction, QApplication
+from . import about_dialog
 
 
 class joinlines(object):
@@ -13,28 +19,67 @@ class joinlines(object):
   def __init__(self, iface):
     """Initialize the class"""
     self.iface = iface
+    self.plugin_dir = path.dirname(__file__)
+    self._translator = None
+    self.__init_translator()
 
   def initGui(self):
-    self.action = QAction(QIcon(os.path.dirname(__file__)+"/icon.png"), "Join two lines", self.iface.mainWindow())
+    self.action = QAction(
+        QIcon(path.join(self.plugin_dir, "icon.png")),
+        QApplication.translate("Join lines", "Join two lines"),
+        self.iface.mainWindow()
+    )
     self.action.setWhatsThis("Permanently join two lines")
     self.action.setStatusTip("Permanently join two lines (removes lines used for joining)")
 
     self.action.triggered.connect(self.run)
 
-    if hasattr( self.iface, "addPluginToVectorMenu" ):
+    self.actionAbout = QAction(
+        QApplication.translate("Join lines", "About"),
+        self.iface.mainWindow()
+    )
+
+    self.actionAbout.triggered.connect(self.about)
+
+    if hasattr(self.iface, "addPluginToVectorMenu"):
       self.iface.addVectorToolBarIcon(self.action)
       self.iface.addPluginToVectorMenu("&Join two lines", self.action)
+      self.iface.addPluginToVectorMenu("&Join two lines", self.actionAbout)
     else:
       self.iface.addToolBarIcon(self.action)
       self.iface.addPluginToMenu("&Join two lines", self.action)
+      self.iface.addPluginToMenu("&Join two lines", self.actionAbout)
 
   def unload(self):
     if hasattr( self.iface, "addPluginToVectorMenu" ):
       self.iface.removePluginVectorMenu("&Join two lines",self.action)
       self.iface.removeVectorToolBarIcon(self.action)
+      self.iface.removePluginVectorMenu("&Join two lines", self.actionAbout)
     else:
       self.iface.removePluginMenu("&Join two lines",self.action)
       self.iface.removeToolBarIcon(self.action)
+      self.iface.removePluginMenu("&Join two lines", self.actionAbout)
+
+  def about(self):
+      dlg = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))
+      dlg.exec_()
+
+  def __init_translator(self):
+      # initialize locale
+      locale = QgsApplication.instance().locale()
+
+      def add_translator(locale_path):
+          if not path.exists(locale_path):
+              return
+          translator = QTranslator()
+          translator.load(locale_path)
+          QCoreApplication.installTranslator(translator)
+          self._translator = translator  # Should be kept in memory
+
+      add_translator(path.join(
+          self.plugin_dir, 'i18n',
+          'joinlines_{}.qm'.format(locale)
+      ))
 
   def run(self):
     layersmap=QgsProject.instance().mapLayers()
@@ -52,7 +97,7 @@ class joinlines(object):
     if cl.geometryType() != QgsWkbTypes.GeometryType.LineGeometry:
       infoString = "Not a line layer"
       QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
-      return    
+      return
     featids = cl.selectedFeatureIds()
     if (len(featids) != 2):
       infoString = "Only two lines should be selected"
@@ -68,7 +113,7 @@ class joinlines(object):
     #   infoString = "Intersection contains more then 1 point"
     #   QMessageBox.information(self.iface.mainWindow(),"Warning",infoString)
     #   return
-    itsct = geom1.intersection(geom0)       
+    itsct = geom1.intersection(geom0)
     itspnt = itsct.vertexAt(0)
     if not itsct.vertexAt(1).isEmpty():
       infoString = "Intersection contains more then 1 point"

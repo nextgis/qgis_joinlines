@@ -1,18 +1,27 @@
-joinlines
-==========
+# Join Lines
 
-This is a plugin for QGIS 3
+A QGIS plugin. Select two lines and merge them to create a single geometry. Hanging (shorter) overshooting parts are dropped. Attributes are ignored.
 
-Select two lines and merge them into one by creating a single geometry and dropping the hanging (shorter) parts. It doesn't take care of attributes.
+QGIS plugins page: https://plugins.qgis.org/plugins/joinlines/  
+
+
+## Permanently join two lines
+
+![joinlines](https://github.com/nextgis/qgis_joinlines/assets/101568545/e84e396d-4db3-4957-9ff1-bd4729dfe8d5)
+
+## YouTube
+-------------
+[![KJqZnNwJisE](https://github.com/nextgis/qgis_joinlines/assets/101568545/c112b216-a382-418d-aa43-41124872f8dd)](https://youtu.be/H_mDkoCsQ-Y)
 
 License
--------
-This program is licensed under GNU GPL v2 or any later version
+-------------
+This program is licensed under GNU GPL v.2 or any later version.
 
 Commercial support
-----------
-Need to fix a bug or add a feature to JoinLines? 
+------------------
+Need to fix a bug or add a feature to Join Lines 
 
-We provide custom development and support for this software. [Contact us](https://nextgis.com/contact/) to discuss options!
+We provide custom development and support for this software. [Contact us](https://nextgis.com/contact/?utm_source=nextgis-github&utm_medium=plugins&utm_campaign=joinlines) to discuss options!
 
-[![https://nextgis.com](https://nextgis.com/img/nextgis.png)](https://nextgis.com)
+
+[![https://nextgis.com](https://nextgis.com/img/nextgis_x-logo.png)](https://nextgis.com?utm_source=nextgis-github&utm_medium=plugins&utm_campaign=joinlines)

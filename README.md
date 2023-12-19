@@ -11,7 +11,7 @@ QGIS plugins page: https://plugins.qgis.org/plugins/joinlines/
 
 ## YouTube
 -------------
-[![KJqZnNwJisE](https://github.com/nextgis/qgis_joinlines/assets/101568545/c112b216-a382-418d-aa43-41124872f8dd)](https://youtu.be/H_mDkoCsQ-Y)
+[![KJqZnNwJisE](https://github.com/nextgis/qgis_joinlines/assets/101568545/c112b216-a382-418d-aa43-41124872f8dd)](https://youtu.be/KJqZnNwJisE)
 
 License
 -------------

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/joinlines" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>

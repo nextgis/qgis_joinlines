@@ -10,10 +10,10 @@
 [general]
 name=Join lines
 about=Permanently join two lines
-about[ru]=Перманентно соединить две строки
+about[ru]=Перманентное соединение двух линий
 description=Permanently join two intersecting or snapped lines. Same layer. Not to be mistaken with multiline.
-description[ru]=Постоянное соединение двух пересекающихся или привязанных линий. Тот же слой. Не путать с мультилинией.
-version=0.5
+description[ru]=Перманентное соединение двух пересекающихся или привязанных линий. Тот же слой. Не путайте с мультилинией.
+version=0.5.0
 qgisMinimumVersion=3.22
 qgisMaximumVersion=3.99
 author=NextGIS
@@ -26,9 +26,10 @@ email=info@nextgis.com
 
 # Uncomment the following line and add your changelog:
 changelog=
-        0.5
+        0.5.0
           * Added About dialog
-        0.4
+          * Fixed bugs
+        0.4.0
           * Porting to QGIS3
 
 homepage=https://nextgis.com

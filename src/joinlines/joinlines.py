@@ -1,4 +1,3 @@
-
 import os
 from os import path
 
@@ -45,32 +44,23 @@ class joinlines:
 
         self.actionAbout.triggered.connect(self.about)
 
-        if hasattr(self.iface, "addPluginToVectorMenu"):
-            self.iface.addVectorToolBarIcon(self.action)
-            self.iface.addPluginToVectorMenu("&Join two lines", self.action)
-            self.iface.addPluginToVectorMenu(
-                "&Join two lines", self.actionAbout
-            )
-        else:
-            self.iface.addToolBarIcon(self.action)
-            self.iface.addPluginToMenu("&Join two lines", self.action)
-            self.iface.addPluginToMenu("&Join two lines", self.actionAbout)
+        self.iface.addVectorToolBarIcon(self.action)
+        self.iface.addPluginToVectorMenu("&Join two lines", self.action)
+        self.iface.addPluginToVectorMenu("&Join two lines", self.actionAbout)
 
     def unload(self):
-        if hasattr(self.iface, "addPluginToVectorMenu"):
-            self.iface.removePluginVectorMenu("&Join two lines", self.action)
-            self.iface.removeVectorToolBarIcon(self.action)
-            self.iface.removePluginVectorMenu(
-                "&Join two lines", self.actionAbout
-            )
-        else:
-            self.iface.removePluginMenu("&Join two lines", self.action)
-            self.iface.removeToolBarIcon(self.action)
-            self.iface.removePluginMenu("&Join two lines", self.actionAbout)
+        self.iface.removeVectorToolBarIcon(self.action)
+        self.iface.removePluginVectorMenu("&Join two lines", self.action)
+        self.iface.removePluginVectorMenu("&Join two lines", self.actionAbout)
+
+        self.action.deleteLater()
+        self.action = None
+        self.actionAbout.deleteLater()
+        self.actionAbout = None
 
     def about(self):
         dlg = about_dialog.AboutDialog(os.path.basename(self.plugin_dir))
-        dlg.exec_()
+        dlg.exec()
 
     def __init_translator(self):
         # initialize locale
@@ -85,9 +75,7 @@ class joinlines:
             self._translator = translator  # Should be kept in memory
 
         add_translator(
-            path.join(
-                self.plugin_dir, "i18n", f"joinlines_{locale}.qm"
-            )
+            path.join(self.plugin_dir, "i18n", f"joinlines_{locale}.qm")
         )
 
     def run(self):

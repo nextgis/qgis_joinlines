@@ -1,10 +1,10 @@
 import os
 from typing import Dict, Optional
 
-from qgis.PyQt.QtCore import QLocale
-from qgis.PyQt.QtWidgets import QWidget, QDialog
-from qgis.PyQt import uic
 from qgis.core import QgsSettings
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import QLocale
+from qgis.PyQt.QtWidgets import QDialog, QWidget
 from qgis.utils import pluginMetadata
 
 FORM_CLASS, _ = uic.loadUiType(

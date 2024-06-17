@@ -1,20 +1,23 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from builtins import object
-from qgis.PyQt.QtCore import *
-from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtWidgets import *
-from qgis.core import *
+
 import os
 from os import path
 
-from qgis.PyQt.QtCore import QTranslator, QCoreApplication
-from qgis.core import QgsApplication
-from qgis.PyQt.QtWidgets import QAction, QApplication
+from qgis.core import (
+    QgsApplication,
+    QgsDistanceArea,
+    QgsFeatureRequest,
+    QgsGeometry,
+    QgsVectorLayer,
+    QgsWkbTypes,
+)
+from qgis.PyQt.QtCore import QCoreApplication, QTranslator
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtWidgets import QAction, QApplication, QMessageBox
+
 from . import about_dialog
 
 
-class joinlines(object):
+class joinlines:
     def __init__(self, iface):
         """Initialize the class"""
         self.iface = iface
@@ -83,22 +86,20 @@ class joinlines(object):
 
         add_translator(
             path.join(
-                self.plugin_dir, "i18n", "joinlines_{}.qm".format(locale)
+                self.plugin_dir, "i18n", f"joinlines_{locale}.qm"
             )
         )
 
     def run(self):
-        layersmap = QgsProject.instance().mapLayers()
-        layerslist = []
         cl = self.iface.activeLayer()
         # cl = self.iface.mapCanvas().currentLayer()
-        if cl == None:
+        if cl is None:
             infoString = "No layers selected"
             QMessageBox.information(
                 self.iface.mainWindow(), "Warning", infoString
             )
             return
-        if cl.type() != cl.VectorLayer:
+        if not isinstance(cl, QgsVectorLayer):
             infoString = "Not a vector layer"
             QMessageBox.information(
                 self.iface.mainWindow(), "Warning", infoString

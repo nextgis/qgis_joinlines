@@ -2,6 +2,49 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU" sourcelanguage="en_US">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../about_dialog.py" line="74"/>
+        <source>Developers</source>
+        <translation>Разработчики</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="75"/>
+        <source>Homepage</source>
+        <translation>Домашняя страница</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="76"/>
+        <source>Please report bugs at</source>
+        <translation>Пожалуйста, сообщайте о багах в</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="78"/>
+        <source>Video with an overview of the plugin</source>
+        <translation>Видео с обзором на плагин</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="79"/>
+        <source>Other helpful services by NextGIS</source>
+        <translation>Другие полезные сервисы от NextGIS</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="80"/>
+        <source>Convenient up-to-date data extracts for any place in the world</source>
+        <translation>Удобная выборка актуальных данных из любой точки мира</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="83"/>
+        <source>Fully featured Web GIS service</source>
+        <translation>Полнофункциональный Веб ГИС-сервис</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="77"/>
+        <source>bugracker</source>
+        <translation>багтрекер</translation>
+    </message>
+</context>
+<context>
     <name>AboutDialogBase</name>
     <message>
         <location filename="../about_dialog_base.ui" line="14"/>
@@ -13,49 +56,83 @@
         <source>&lt;p align=&quot;center&quot;&gt;{plugin_name}&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;{plugin_name}&lt;/p&gt;</translation>
     </message>
-    <message>
-        <location filename="../about_dialog_base.ui" line="40"/>
-        <source>&lt;p&gt;{description}&lt;/p&gt;
-&lt;p&gt;{about}&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Developers:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Homepage:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Video with an overview of the plugin:&lt;/b&gt; &lt;a href=&quot;{video_url}&quot;&gt;
-{video_url}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Please report bugs at&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;bugtracker&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Other helpful services by NextGIS:
-&lt;ul&gt;&lt;li&gt;&lt;b&gt;Convenient up-to-date data extracts for any place in the world:
-&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Fully featured Web GIS service:
-&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
-{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;/p&gt;</source>
-        <translation>&lt;p&gt;{description}&lt;/p&gt;
-&lt;p&gt;{about}&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Разработчики:&lt;/b&gt; &lt;a href=&quot;{main_url}&quot;&gt;{authors}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Домашняя страница:&lt;/b&gt; &lt;a href=&quot;{homepage_url}&quot;&gt;{homepage_url}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Видео с обзором плагина:&lt;/b&gt; &lt;a href=&quot;{video_url}&quot;&gt;
-{video_url}&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Пожалуйста, сообщайте о багах в&lt;/b&gt; &lt;a href=&quot;{tracker_url}&quot;&gt;багтрекер&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Другие полезные сервисы NextGIS:
-&lt;ul&gt;&lt;li&gt;&lt;b&gt;Удобная выборка актуальных данных из любой точки мира:
-&lt;a href=&quot;{main_url}&quot;&gt;{main_url}&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Полнофункциональный веб-ГИС-сервис:
-&lt;a href=&quot;{main_url}/nextgis-com/plans&quot;&gt;
-{main_url}/nextgis-com/plans&lt;/a&gt;&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;/p&gt;</translation>
-    </message>
 </context>
 <context>
-    <name>Join lines</name>
+    <name>joinlines</name>
     <message>
-        <location filename="../joinlines.py" line="27"/>
+        <location filename="../joinlines.py" line="63"/>
+        <source>&amp;Join two lines</source>
+        <translation>&amp;Объединить две линии</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="29"/>
         <source>Join two lines</source>
         <translation>Объединить две линии</translation>
     </message>
     <message>
-        <location filename="../joinlines.py" line="37"/>
+        <location filename="../joinlines.py" line="34"/>
+        <source>Permanently join two lines</source>
+        <translation>Перманентное соединение двух линий</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="35"/>
+        <source>Permanently join two lines (removes lines used for joining)</source>
+        <translation>Перманентное соединение двух линий (удаляет линии, использованные для объединения)</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="43"/>
         <source>About</source>
-        <translation>О модуле...</translation>
+        <translation>О модуле</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="96"/>
+        <source>No layers selected</source>
+        <translation>Не выбраны слои</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="116"/>
+        <source>Warning</source>
+        <translation>Предупреждение</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="102"/>
+        <source>Not a vector layer</source>
+        <translation>Слой не векторный</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="108"/>
+        <source>Not a line layer</source>
+        <translation>Геометрийя слоя не линейная</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="115"/>
+        <source>Only two lines should be selected</source>
+        <translation>Должны быть выбраны только две линии</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="133"/>
+        <source>Intersection contains more then 1 point</source>
+        <translation>Пересечение содержит больше одной точки</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="183"/>
+        <source>Join error</source>
+        <translation>Ошибка объединения</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="183"/>
+        <source>Lines should have common point or intersection</source>
+        <translation>Линии должны иметь общую точку, либо пересечение</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="258"/>
+        <source>Join selected lines</source>
+        <translation>Объединение выделенных линий</translation>
+    </message>
+    <message>
+        <location filename="../joinlines.py" line="261"/>
+        <source>Delete feature</source>
+        <translation>Удаление объекта</translation>
     </message>
 </context>
 </TS>

@@ -1,5 +1,6 @@
 import os
 from os import path
+from typing import Optional
 
 from qgis.core import (
     QgsApplication,
@@ -11,7 +12,7 @@ from qgis.core import (
 )
 from qgis.PyQt.QtCore import QCoreApplication, QTranslator
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction, QApplication, QMessageBox
+from qgis.PyQt.QtWidgets import QAction, QMessageBox
 
 from . import about_dialog
 
@@ -27,31 +28,41 @@ class joinlines:
     def initGui(self):
         self.action = QAction(
             QIcon(path.join(self.plugin_dir, "icon.png")),
-            QApplication.translate("Join lines", "Join two lines"),
+            self.tr("Join two lines"),
             self.iface.mainWindow(),
         )
-        self.action.setWhatsThis("Permanently join two lines")
+        self.action.setWhatsThis(self.tr("Permanently join two lines"))
         self.action.setStatusTip(
-            "Permanently join two lines (removes lines used for joining)"
+            self.tr(
+                "Permanently join two lines (removes lines used for joining)"
+            )
         )
 
         self.action.triggered.connect(self.run)
 
         self.actionAbout = QAction(
-            QApplication.translate("Join lines", "About"),
+            self.tr("About"),
             self.iface.mainWindow(),
         )
 
         self.actionAbout.triggered.connect(self.about)
 
         self.iface.addVectorToolBarIcon(self.action)
-        self.iface.addPluginToVectorMenu("&Join two lines", self.action)
-        self.iface.addPluginToVectorMenu("&Join two lines", self.actionAbout)
+        self.iface.addPluginToVectorMenu(
+            self.tr("&Join two lines"), self.action
+        )
+        self.iface.addPluginToVectorMenu(
+            self.tr("&Join two lines"), self.actionAbout
+        )
 
     def unload(self):
         self.iface.removeVectorToolBarIcon(self.action)
-        self.iface.removePluginVectorMenu("&Join two lines", self.action)
-        self.iface.removePluginVectorMenu("&Join two lines", self.actionAbout)
+        self.iface.removePluginVectorMenu(
+            self.tr("&Join two lines"), self.action
+        )
+        self.iface.removePluginVectorMenu(
+            self.tr("&Join two lines"), self.actionAbout
+        )
 
         self.action.deleteLater()
         self.action = None
@@ -82,28 +93,28 @@ class joinlines:
         cl = self.iface.activeLayer()
         # cl = self.iface.mapCanvas().currentLayer()
         if cl is None:
-            infoString = "No layers selected"
+            infoString = self.tr("No layers selected")
             QMessageBox.information(
-                self.iface.mainWindow(), "Warning", infoString
+                self.iface.mainWindow(), self.tr("Warning"), infoString
             )
             return
         if not isinstance(cl, QgsVectorLayer):
-            infoString = "Not a vector layer"
+            infoString = self.tr("Not a vector layer")
             QMessageBox.information(
-                self.iface.mainWindow(), "Warning", infoString
+                self.iface.mainWindow(), self.tr("Warning"), infoString
             )
             return
         if cl.geometryType() != QgsWkbTypes.GeometryType.LineGeometry:
-            infoString = "Not a line layer"
+            infoString = self.tr("Not a line layer")
             QMessageBox.information(
-                self.iface.mainWindow(), "Warning", infoString
+                self.iface.mainWindow(), self.tr("Warning"), infoString
             )
             return
         featids = cl.selectedFeatureIds()
         if len(featids) != 2:
-            infoString = "Only two lines should be selected"
+            infoString = self.tr("Only two lines should be selected")
             QMessageBox.information(
-                self.iface.mainWindow(), "Warning", infoString
+                self.iface.mainWindow(), self.tr("Warning"), infoString
             )
             return
         selfeats = cl.selectedFeatures()
@@ -119,7 +130,7 @@ class joinlines:
         itsct = geom1.intersection(geom0)
         itspnt = itsct.vertexAt(0)
         if not itsct.vertexAt(1).isEmpty():
-            infoString = "Intersection contains more then 1 point"
+            infoString = self.tr("Intersection contains more then 1 point")
             QMessageBox.information(
                 self.iface.mainWindow(), "Warning", infoString
             )
@@ -147,8 +158,8 @@ class joinlines:
             if res == 1:  # split failed
                 QMessageBox.warning(
                     self.iface.mainWindow(),
-                    "Join error",
-                    "Lines should have common point or intersection",
+                    self.tr("Join error"),
+                    self.tr("Lines should have common point or intersection"),
                 )
                 return
             pnts = geom1.asPolyline()
@@ -171,8 +182,8 @@ class joinlines:
             if res == 1:  # split failed
                 QMessageBox.warning(
                     self.iface.mainWindow(),
-                    "Join error",
-                    "Lines should have common point or intersection",
+                    self.tr("Join error"),
+                    self.tr("Lines should have common point or intersection"),
                 )
                 return
             pnts = geom0.asPolyline()
@@ -244,10 +255,20 @@ class joinlines:
         # selfeats[0].setGeometry(newgeom)
         # curLayer.commitChanges()
         cl.startEditing()
-        cl.beginEditCommand("Join selected lines")
+        cl.beginEditCommand(self.tr("Join selected lines"))
         cl.changeGeometry(featids[0], newgeom)
         cl.endEditCommand()
-        cl.beginEditCommand("Delete feature")
+        cl.beginEditCommand(self.tr("Delete feature"))
         cl.deleteFeature(featids[1])
         cl.endEditCommand()
         self.iface.mapCanvas().refresh()
+
+    def tr(
+        self,
+        source_text: str,
+        disambiguation: Optional[str] = None,
+        n: int = -1,
+    ) -> str:
+        return QgsApplication.translate(
+            "joinlines", source_text, disambiguation, n
+        )

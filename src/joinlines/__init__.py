@@ -1,5 +1,3 @@
-
-
 def classFactory(iface):
     from .joinlines import joinlines
 

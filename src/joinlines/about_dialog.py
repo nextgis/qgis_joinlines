@@ -104,4 +104,8 @@ class AboutDialog(QDialog, FORM_CLASS):
             </p>
             """
 
-        return (description + services).format_map(titles | metadata)
+        replacements = dict()
+        replacements.update(titles)
+        replacements.update(metadata)
+
+        return (description + services).format_map(replacements)

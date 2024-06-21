@@ -4,44 +4,49 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../about_dialog.py" line="74"/>
+        <location filename="../about_dialog.py" line="83"/>
         <source>Developers</source>
         <translation>Разработчики</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="75"/>
+        <location filename="../about_dialog.py" line="84"/>
         <source>Homepage</source>
         <translation>Домашняя страница</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="76"/>
+        <location filename="../about_dialog.py" line="85"/>
         <source>Please report bugs at</source>
         <translation>Пожалуйста, сообщайте о багах в</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="78"/>
+        <location filename="../about_dialog.py" line="88"/>
         <source>Video with an overview of the plugin</source>
         <translation>Видео с обзором на плагин</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="79"/>
+        <location filename="../about_dialog.py" line="89"/>
         <source>Other helpful services by NextGIS</source>
         <translation>Другие полезные сервисы от NextGIS</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="80"/>
+        <location filename="../about_dialog.py" line="90"/>
         <source>Convenient up-to-date data extracts for any place in the world</source>
         <translation>Удобная выборка актуальных данных из любой точки мира</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="83"/>
+        <location filename="../about_dialog.py" line="93"/>
         <source>Fully featured Web GIS service</source>
         <translation>Полнофункциональный Веб ГИС-сервис</translation>
     </message>
     <message>
-        <location filename="../about_dialog.py" line="77"/>
-        <source>bugracker</source>
+        <location filename="../about_dialog.py" line="87"/>
+        <source>bugtracker</source>
         <translation>багтрекер</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="78"/>
+        <source>REPORT_END</source>
+        <translation></translation>
     </message>
 </context>
 <context>

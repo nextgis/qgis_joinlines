@@ -13,7 +13,7 @@ about=Permanently join two lines
 about[ru]=Перманентное соединение двух линий
 description=Permanently join two intersecting or snapped lines. Same layer. Not to be mistaken with multiline.
 description[ru]=Перманентное соединение двух пересекающихся или привязанных линий. Тот же слой. Не путайте с мультилинией.
-version=0.5.1
+version=0.5.2
 qgisMinimumVersion=3.22
 qgisMaximumVersion=3.99
 author=NextGIS
@@ -26,6 +26,8 @@ email=info@nextgis.com
 
 # Uncomment the following line and add your changelog:
 changelog=
+        0.5.2
+          * Fixed typo
         0.5.1
           * Fixed About dialog for old QGIS
         0.5.0

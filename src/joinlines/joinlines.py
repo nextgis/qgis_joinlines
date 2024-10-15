@@ -27,7 +27,7 @@ class joinlines:
 
     def initGui(self):
         self.action = QAction(
-            QIcon(path.join(self.plugin_dir, "icon.png")),
+            QIcon(path.join(self.plugin_dir, "icons/icon.png")),
             self.tr("Join two lines"),
             self.iface.mainWindow(),
         )

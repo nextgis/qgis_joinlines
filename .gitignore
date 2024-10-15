@@ -215,3 +215,10 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+# PyQt
+ui_*.py
+resources.py
+
+# QGIS
+*.db

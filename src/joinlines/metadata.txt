@@ -39,7 +39,7 @@ changelog=
 homepage=https://nextgis.com
 tracker=https://github.com/nextgis/qgis_joinlines/issues
 repository=https://github.com/nextgis/qgis_joinlines
-icon=icon.png
+icon=icons/icon.png
 video=https://youtu.be/KJqZnNwJisE
 video[ru]=https://youtu.be/oeG9Z7yXd2Q
 

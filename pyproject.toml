@@ -1,12 +1,12 @@
 [project]
 name = "joinlines"
-version = "0.5.2"
+version = "0.6.0"
 readme = "README.md"
 license = { file = "LICENSE" }
 
 
 [tool.qgspb.package-data]
-"joinlines.icons" = ["icon.png"]
+"joinlines.icons" = ["*.png", "*.svg"]
 
 [tool.qgspb.forms]
 ui-files = ["src/joinlines/ui/*.ui"]

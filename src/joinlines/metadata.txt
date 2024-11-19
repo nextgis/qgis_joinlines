@@ -9,11 +9,11 @@
 
 [general]
 name=Join lines
-about=Permanently join two lines
-about[ru]=Перманентное соединение двух линий
-description=Permanently join two intersecting or snapped lines. Same layer. Not to be mistaken with multiline.
-description[ru]=Перманентное соединение двух пересекающихся или привязанных линий. Тот же слой. Не путайте с мультилинией.
-version=0.5.2
+description=Permanently join two lines
+description[ru]=Перманентное соединение двух линий
+about=Permanently join two intersecting or snapped lines. Same layer. Not to be mistaken with multiline.
+about[ru]=Перманентное соединение двух пересекающихся или привязанных линий. Тот же слой. Не путайте с мультилинией.
+version=0.6.0
 qgisMinimumVersion=3.22
 qgisMaximumVersion=3.99
 author=NextGIS
@@ -26,6 +26,9 @@ email=info@nextgis.com
 
 # Uncomment the following line and add your changelog:
 changelog=
+        0.6.0
+          * Updated the "About plugin" dialog
+          * Added plugin item to help menu
         0.5.2
           * Fixed typo
         0.5.1

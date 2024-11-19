@@ -55,6 +55,15 @@ class joinlines:
             self.tr("&Join two lines"), self.actionAbout
         )
 
+        self.__show_help_action = QAction(
+            QIcon(path.join(self.plugin_dir, "icons/icon.png")),
+            "Join lines",
+        )
+        self.__show_help_action.triggered.connect(self.about)
+        plugin_help_menu = self.iface.pluginHelpMenu()
+        assert plugin_help_menu is not None
+        plugin_help_menu.addAction(self.__show_help_action)
+
     def unload(self):
         self.iface.removeVectorToolBarIcon(self.action)
         self.iface.removePluginVectorMenu(
